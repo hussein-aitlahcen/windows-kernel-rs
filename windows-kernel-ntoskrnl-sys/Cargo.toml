@@ -1,6 +1,7 @@
 [package]
 name = "windows_kernel_ntoskrnl_sys"
 version = "0.1.0"
+license = "MIT"
 authors = ["Hussein Ait Lahcen <hussein.aitlahcen@gmail.com>"]
 edition = "2018"
 build = "build.rs"
