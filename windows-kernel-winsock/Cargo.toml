@@ -1,0 +1,31 @@
+[package]
+name = "windows_kernel_winsock"
+version = "0.1.0"
+authors = ["Hussein Ait Lahcen <hussein.aitlahcen@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+cty = "0.2.1"
+
+[dependencies.either]
+version = "1.6.1"
+default-features = false
+
+[dependencies.itertools]
+version = "0.10.0"
+default-features = false
+
+[dependencies.windows_kernel_abstract]
+path = "../windows-kernel-abstract"
+
+[dependencies.windows_kernel_common_sys]
+path = "../windows-kernel-common-sys"
+
+[dependencies.windows_kernel_ntoskrnl_sys]
+path = "../windows-kernel-ntoskrnl-sys"
+
+[dependencies.windows_kernel_netio_sys]
+path = "../windows-kernel-netio-sys"
+
+[build-dependencies.windows_kernel_bindgen]
+path = "../windows-kernel-bindgen"

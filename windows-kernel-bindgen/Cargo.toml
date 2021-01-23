@@ -1,0 +1,11 @@
+[package]
+name = "windows_kernel_bindgen"
+version = "0.1.0"
+authors = ["Hussein Ait Lahcen <hussein.aitlahcen@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+winreg = "0.8.0"
+
+[dependencies.bindgen]
+version = "0.56.0"

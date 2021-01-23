@@ -1,0 +1,15 @@
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
+
+[workspace]
+members = [
+    "windows-kernel-common-sys",
+    "windows-kernel-ntoskrnl-sys",
+    "windows-kernel-cng-sys",
+    "windows-kernel-netio-sys",
+    "windows-kernel-winsock",
+    "windows-kernel-winsock-example",
+]

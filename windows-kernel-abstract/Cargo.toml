@@ -1,0 +1,15 @@
+[package]
+name = "windows_kernel_abstract"
+version = "0.1.0"
+authors = ["Hussein Ait Lahcen <hussein.aitlahcen@gmail.com>"]
+edition = "2018"
+
+[dependencies.either]
+version = "1.6.1"
+default-features = false
+
+[dependencies.windows_kernel_common_sys]
+path = "../windows-kernel-common-sys"
+
+[dependencies.windows_kernel_ntoskrnl_sys]
+path = "../windows-kernel-ntoskrnl-sys"

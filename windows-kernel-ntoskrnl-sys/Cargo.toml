@@ -1,0 +1,19 @@
+[package]
+name = "windows_kernel_ntoskrnl_sys"
+version = "0.1.0"
+authors = ["Hussein Ait Lahcen <hussein.aitlahcen@gmail.com>"]
+edition = "2018"
+build = "build.rs"
+links = "ntosrknl"
+
+[dependencies]
+cty = "0.2.1"
+
+[dependencies.windows_kernel_common_sys]
+path = "../windows-kernel-common-sys"
+
+[build-dependencies]
+cc = "1.0.66"
+
+[build-dependencies.windows_kernel_bindgen]
+path = "../windows-kernel-bindgen"

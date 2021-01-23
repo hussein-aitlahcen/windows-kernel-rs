@@ -1,0 +1,33 @@
+[env.development]
+TARGET_PATH = "../target/x86_64-pc-windows-msvc/debug"
+BUILD_FLAGS = "--target x86_64-pc-windows-msvc"
+
+[env.production]
+TARGET_PATH = "../target/x86_64-pc-windows-msvc/release"
+BUILD_FLAGS = "--release --target x86_64-pc-windows-msvc"
+
+[tasks.build-driver]
+script = [
+    # Load the Visual Studio Developer environment
+    "call \"%ProgramFiles(x86)%\\Microsoft Visual Studio\\2019\\Community\\VC\\Auxiliary\\Build\\vcvars64.bat\"",
+    "set LIBCLANG_PATH=%ProgramFiles(x86)%\\Microsoft Visual Studio\\2019\\Community\\VC\\Tools\\Llvm\\x64\\bin",
+    "cargo build %BUILD_FLAGS%"
+]
+
+[tasks.rename]
+dependencies = ["build-driver"]
+ignore_errors = true
+script = [
+    "cd %TARGET_PATH%",
+    "rename windows_kernel_winsock_example.dll windows_kernel_winsock_example.sys",
+]
+
+[tasks.sign]
+dependencies = ["build-driver", "rename"]
+script = [
+    "call \"%ProgramFiles(x86)%\\Microsoft Visual Studio\\2019\\Community\\VC\\Auxiliary\\Build\\vcvars64.bat\"",
+
+    "if not exist DriverCertificate.cer ( makecert -r -pe -ss PrivateCertStore -n CN=DriverCertificate DriverCertificate.cer ) else ( echo Certificate already exists. )",
+
+    "signtool sign /a /v /s PrivateCertStore /n DriverCertificate /t http://timestamp.digicert.com %TARGET_PATH%/windows_kernel_winsock_example.sys"
+]

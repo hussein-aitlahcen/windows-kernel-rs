@@ -1,0 +1,50 @@
+[package]
+name = "windows_kernel_winsock_example"
+version = "0.1.0"
+authors = ["Hussein Ait Lahcen <hussein.aitlahcen@gmail.com>"]
+edition = "2018"
+build = "build.rs"
+
+[lib]
+path = "src/lib.rs"
+crate-type = ["cdylib"]
+
+[dependencies]
+kernel-alloc = "0.1.0"
+cty = "0.2.1"
+
+[dependencies.httparse]
+version = "1.3.4"
+default-features = false
+
+[dependencies.either]
+version = "1.6.1"
+default-features = false
+
+[dependencies.itertools]
+version = "0.10.0"
+default-features = false
+
+[dependencies.winapi]
+git = "https://github.com/retep998/winapi-rs"
+branch = "0.3"
+features = ["ws2def", "ntlsa", "ntstatus", "mstcpip", "impl-default"]
+default-features = false
+
+[dependencies.windows_kernel_abstract]
+path = "../windows-kernel-abstract"
+
+[dependencies.windows_kernel_common_sys]
+path = "../windows-kernel-common-sys"
+
+[dependencies.windows_kernel_ntoskrnl_sys]
+path = "../windows-kernel-ntoskrnl-sys"
+
+[dependencies.windows_kernel_netio_sys]
+path = "../windows-kernel-netio-sys"
+
+[dependencies.windows_kernel_winsock]
+path = "../windows-kernel-winsock"
+
+[build-dependencies.windows_kernel_bindgen]
+path = "../windows-kernel-bindgen"
